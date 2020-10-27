@@ -212,23 +212,27 @@ function setup () {
     game.keyboard(32).press = () => {
         if (!musicSound.playing) musicSound.play();
 
-        //Shoot the bullet
-        game.shoot(
-            player,            //The shooter
-            4.71,              //The angle at which to shoot (4.71 is up)
-            player.halfWidth,  //Bullet's x position on the cannon
-            0,                 //Bullet's y position on the canon
-            game.stage,           //The container to which the bullet should be added
-            7,                 //The bullet's speed (pixels per frame)
-            bullets,           //The array used to store the bullets
+        if (game.state === play) {
 
-            //A function that returns the sprite that should
-            //be used to make each bullet
-            () => game.sprite("bullet.png")
-        );
+            //Shoot the bullet
+            game.shoot(
+                player,            //The shooter
+                4.71,              //The angle at which to shoot (4.71 is up)
+                player.halfWidth,  //Bullet's x position on the cannon
+                0,                 //Bullet's y position on the canon
+                game.stage,           //The container to which the bullet should be added
+                7,                 //The bullet's speed (pixels per frame)
+                bullets,           //The array used to store the bullets
 
-        //Play the shoot sound.
-        shootSound.play();
+                //A function that returns the sprite that should
+                //be used to make each bullet
+                () => game.sprite("bullet.png")
+            );
+
+            //Play the shoot sound.
+            shootSound.play();
+
+        }
     };
 
     aliens = [];
